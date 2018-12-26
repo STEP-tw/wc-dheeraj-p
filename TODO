@@ -1,6 +1,5 @@
 (*) node ./wc.js file1
 ....(*) Refactor tests for wc()
-........(*) Remove duplicacy of fs
-....(*) Write test for format()
+........(*) Use encoding in mock fs
 ....(*) Write more tests for wc()
 
