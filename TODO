@@ -1,0 +1,3 @@
+(*) node ./wc.js file1
+....(*) Write top-level test for default case.
+....(*) Write top-level wc function to pass default case test.
