@@ -1,17 +1,19 @@
 const assert = require('assert');
 const { wc } = require('../src/libs/wc');
 
-const createFileSystem = function(files) {
+const createFileSystem = function(files, actualEncoding) {
   return {
-    readFileSync: function(filename, encoding) {
-      return files[filename];
+    readFileSync: function(filename, expectedEncoding) {
+      if (actualEncoding == expectedEncoding) {
+        return files[filename];
+      }
     }
   };
 };
 
 describe('wc', function() {
   const files = { file: 'some file', emptyFile: '' };
-  const fs = createFileSystem(files);
+  const fs = createFileSystem(files, 'utf-8');
 
   it('should return line,  word and character count with filename for single file', function() {
     const actual = wc('file', fs);

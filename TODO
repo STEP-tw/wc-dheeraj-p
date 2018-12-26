@@ -1,5 +1,3 @@
 (*) node ./wc.js file1
-....(*) Refactor tests for wc()
-........(*) Use encoding in mock fs
 ....(*) Write more tests for wc()
 
