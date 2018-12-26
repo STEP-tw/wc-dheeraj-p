@@ -14,14 +14,11 @@ const singleOptionFormatter = function(option, fileDetails) {
   return [formattedCount, filename].join(SPACE);
 };
 
-const twoOptionsFormatter = function(options, fileDetails) {
-  const firstCountOption = options[0];
-  const secondCountOption = options[1];
-
-  const firstCount = fileDetails[firstCountOption];
-  const secondCount = fileDetails[secondCountOption];
-
+const twoOptionsFormatter = function([firstOption, secondOption], fileDetails) {
+  const firstCount = fileDetails[firstOption];
+  const secondCount = fileDetails[secondOption];
   const { filename } = fileDetails;
+  
   const formattedCount = [EMTPY_STRING, firstCount, secondCount].join(TAB);
   return [formattedCount, filename].join(SPACE);
 };

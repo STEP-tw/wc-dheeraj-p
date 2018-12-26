@@ -20,7 +20,7 @@ describe('getFormatter', function() {
     assert.equal(actual, expected);
   });
 
-  it('should return line count formatter for line option', function() {
+  it('should return single option formatter formatter for line option', function() {
     const singleOptionFormatter = getFormatter(['lineCount']);
     const dataToFormat = {
       filename: 'file',
