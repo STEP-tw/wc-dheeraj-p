@@ -1,10 +1,20 @@
-const { HYPHEN, EMTPY_STRING } = require('../constants');
+const {
+  HYPHEN,
+  EMTPY_STRING,
+  OPTION_LINE_COUNT,
+  OPTION_WORD_COUNT,
+  OPTION_CHAR_COUNT
+} = require('../constants');
 
 const isOption = candidate =>
   candidate.startsWith(HYPHEN) && candidate.length > 1;
 
 const getLongOption = function(shortOption) {
-  const options = { l: 'lineCount', c: 'charCount', w: 'wordCount' };
+  const options = {
+    l: OPTION_LINE_COUNT,
+    c: OPTION_CHAR_COUNT,
+    w: OPTION_WORD_COUNT
+  };
   return options[shortOption];
 };
 
@@ -25,7 +35,7 @@ const parse = function(args) {
 
   if (!isOption(optionCandidate)) {
     filename = args[0];
-    longOptions = ['lineCount', 'wordCount', 'charCount'];
+    longOptions = [OPTION_LINE_COUNT, OPTION_WORD_COUNT, OPTION_CHAR_COUNT];
   }
 
   return createParsedArgs(longOptions, filename);

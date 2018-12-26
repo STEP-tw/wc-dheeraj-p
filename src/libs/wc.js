@@ -1,5 +1,11 @@
 const { getFormatter } = require('../io/formatter');
-const { NEWLINE, WORD_SEPARATOR, EMTPY_STRING } = require('../constants');
+const {
+  NEWLINE,
+  WORD_SEPARATOR,
+  EMTPY_STRING,
+  ENCODING_UTF8
+} = require('../constants');
+
 const { isNotEmpty } = require('../utils/string.js');
 const { parse } = require('../io/parser');
 
@@ -25,7 +31,7 @@ const getFileDetails = function(filename, fileContent) {
 
 const wc = function(args, fs) {
   const { filename, options } = parse(args);
-  const fileContent = fs.readFileSync(filename, 'utf-8');
+  const fileContent = fs.readFileSync(filename, ENCODING_UTF8);
   const fileDetails = getFileDetails(filename, fileContent);
   const formatter = getFormatter(options);
   return formatter(fileDetails);
