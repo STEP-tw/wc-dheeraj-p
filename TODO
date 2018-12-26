@@ -1,6 +1,6 @@
 (*) node ./wc.js file1
-....(*) Refactor wc()
-........(*) Too many maps and filters are there
-........(*) Separate Formatting from it
 ....(*) Refactor tests for wc()
 ........(*) Remove duplicacy of fs
+....(*) Write test for format()
+....(*) Write more tests for wc()
+
