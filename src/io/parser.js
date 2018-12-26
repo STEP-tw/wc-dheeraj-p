@@ -3,25 +3,26 @@ const { HYPHEN } = require('../constants');
 const isOption = candidate => candidate.startsWith(HYPHEN) && candidate.length > 1;
 
 const getLongOption = function(shortOption) {
-  const options = { '-l': 'lineCount', '-c': 'charCount', '-w': 'wordCount' };
+  const options = { l: 'lineCount', c: 'charCount', w: 'wordCount' };
   return options[shortOption];
 };
 
-const createParsedArgs = function(option, filename) {
-  return { option, filename };
+const createParsedArgs = function(options, filename) {
+  return { options, filename };
 };
 
 const parse = function(args) {
   const optionCandidate = args[0];
   let filename = args[1];
-  let option = getLongOption(optionCandidate);
+  const shortOptions = optionCandidate.substr(1).split('');
+  let longOptions = shortOptions.map(getLongOption);
 
   if (!isOption(optionCandidate)) {
     filename = args[0];
-    option = '';
+    longOptions = ['lineCount', 'wordCount', 'charCount'];
   }
 
-  return createParsedArgs(option, filename);
+  return createParsedArgs(longOptions, filename);
 };
 
 module.exports = { parse };

@@ -55,4 +55,14 @@ describe('wc', function() {
       assert.equal(actual, expected);
     });
   });
+
+  describe('with two options together', function() {
+    it('should return line and word count along with filename for single file', function() {
+      const args = ['-lw', 'file'];
+      const actual = wc(args, fs);
+      const expected = '\t0\t2 file';
+
+      assert.equal(actual, expected);
+    });
+  });
 });

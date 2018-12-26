@@ -24,10 +24,10 @@ const getFileDetails = function(filename, fileContent) {
 };
 
 const wc = function(args, fs) {
-  const { filename, option } = parse(args);
+  const { filename, options } = parse(args);
   const fileContent = fs.readFileSync(filename, 'utf-8');
   const fileDetails = getFileDetails(filename, fileContent);
-  const formatter = getFormatter(option);
+  const formatter = getFormatter(options);
   return formatter(fileDetails);
 };
 

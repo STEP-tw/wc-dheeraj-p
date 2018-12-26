@@ -1,1 +1,5 @@
-(*) Write test for multiline files ---> wc()
+(*) make `wc -lw` pass
+....(*) write parser for parsing two options together
+....(*) make formatter for two options together
+
+(*) Refactor tests of getFormatter()
