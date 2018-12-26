@@ -1,4 +1,4 @@
-const { getFormatter } = require('../io/formatter');
+const { format } = require('../io/formatter');
 const {
   NEWLINE,
   WORD_SEPARATOR,
@@ -33,8 +33,7 @@ const wc = function(args, fs) {
   const { filename, options } = parse(args);
   const fileContent = fs.readFileSync(filename, ENCODING_UTF8);
   const fileDetails = getFileDetails(filename, fileContent);
-  const formatter = getFormatter(options);
-  return formatter(fileDetails);
+  return format(fileDetails, options);
 };
 
 module.exports = { wc };
