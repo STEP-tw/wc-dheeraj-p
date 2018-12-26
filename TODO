@@ -1,1 +1,2 @@
-(*) Write more tests for wc()
+(*) Refactor format() tests
+(*) Modify parse() to parse multiple options separated by space e.g. `-l -w -c`

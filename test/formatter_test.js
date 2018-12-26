@@ -40,4 +40,31 @@ describe('format', function() {
 
     assert.equal(actual, expected);
   });
+
+  it('should maintain the specific order of count for given two options together', function() {
+    const twoOptions = ['wordCount', 'lineCount'];
+    const dataToFormat = {
+      filename: 'file',
+      lineCount: 4,
+      wordCount: 10
+    };
+    const actual = format(dataToFormat, twoOptions);
+    const expected = '\t4\t10 file';
+
+    assert.equal(actual, expected);
+  });
+
+  it('should maintain the specific order of count for given three options together', function() {
+    const twoOptions = ['wordCount', 'charCount', 'lineCount'];
+    const dataToFormat = {
+      filename: 'file',
+      lineCount: 4,
+      wordCount: 10,
+      charCount: 20
+    };
+    const actual = format(dataToFormat, twoOptions);
+    const expected = '\t4\t10\t20 file';
+
+    assert.equal(actual, expected);
+  });
 });
