@@ -1,5 +1,4 @@
-(*) make `wc -lw` pass
-....(*) write parser for parsing two options together
-....(*) make formatter for two options together
-
-(*) Refactor tests of getFormatter()
+(*) Move `utf-8` to constants
+(*) Write more tests for wc()
+(*) Move `removeFirstChar()` to utils/string.js
+(*) Move long option strings such as `lineCount` etc. to constants
