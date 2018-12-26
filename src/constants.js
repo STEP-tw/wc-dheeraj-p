@@ -2,7 +2,7 @@ const NEWLINE = '\n';
 const TAB = '\t';
 const WORD_SEPARATOR = /[ \n]+/;
 const SPACE = ' ';
-const EMTPY_STRING = '';
+const EMPTY_STRING = '';
 const HYPHEN = '-';
 const OPTION_LINE_COUNT = 'lineCount';
 const OPTION_CHAR_COUNT = 'charCount';
@@ -14,7 +14,7 @@ module.exports = {
   TAB,
   WORD_SEPARATOR,
   SPACE,
-  EMTPY_STRING,
+  EMPTY_STRING,
   HYPHEN,
   OPTION_CHAR_COUNT,
   OPTION_LINE_COUNT,

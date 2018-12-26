@@ -2,7 +2,7 @@ const { getFormatter } = require('../io/formatter');
 const {
   NEWLINE,
   WORD_SEPARATOR,
-  EMTPY_STRING,
+  EMPTY_STRING,
   ENCODING_UTF8
 } = require('../constants');
 
@@ -17,7 +17,7 @@ const getWordsCount = text => getWords(text).filter(isNotEmpty).length;
 
 const getWords = text => text.split(WORD_SEPARATOR);
 
-const getChars = text => text.split(EMTPY_STRING);
+const getChars = text => text.split(EMPTY_STRING);
 
 const getCharsCount = text => getChars(text).length;
 

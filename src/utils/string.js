@@ -1,5 +1,5 @@
-const { EMTPY_STRING } = require('../constants');
+const { EMPTY_STRING } = require('../constants');
 
-const isNotEmpty = text => text !== EMTPY_STRING;
+const isNotEmpty = text => text !== EMPTY_STRING;
 
 module.exports = { isNotEmpty };

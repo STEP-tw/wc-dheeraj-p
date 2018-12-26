@@ -1,7 +1,7 @@
-const { TAB, SPACE, EMTPY_STRING } = require('../constants');
+const { TAB, SPACE, EMPTY_STRING } = require('../constants');
 
 const defaultFormatter = function({filename, lineCount, wordCount,charCount}) {
-  const formattedCount = [EMTPY_STRING, lineCount, wordCount, charCount].join(
+  const formattedCount = [EMPTY_STRING, lineCount, wordCount, charCount].join(
     TAB
   );
   return [formattedCount, filename].join(SPACE);
@@ -10,7 +10,7 @@ const defaultFormatter = function({filename, lineCount, wordCount,charCount}) {
 const singleOptionFormatter = function(option, fileDetails) {
   const count = fileDetails[option];
   const { filename } = fileDetails;
-  const formattedCount = [EMTPY_STRING, count].join(TAB);
+  const formattedCount = [EMPTY_STRING, count].join(TAB);
   return [formattedCount, filename].join(SPACE);
 };
 
@@ -19,7 +19,7 @@ const twoOptionsFormatter = function([firstOption, secondOption], fileDetails) {
   const secondCount = fileDetails[secondOption];
   const { filename } = fileDetails;
   
-  const formattedCount = [EMTPY_STRING, firstCount, secondCount].join(TAB);
+  const formattedCount = [EMPTY_STRING, firstCount, secondCount].join(TAB);
   return [formattedCount, filename].join(SPACE);
 };
 

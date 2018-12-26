@@ -1,6 +1,6 @@
 const {
   HYPHEN,
-  EMTPY_STRING,
+  EMPTY_STRING,
   OPTION_LINE_COUNT,
   OPTION_WORD_COUNT,
   OPTION_CHAR_COUNT
@@ -25,7 +25,7 @@ const createParsedArgs = function(options, filename) {
 const removeHyphen = optionWithHyphen => optionWithHyphen.substr(1);
 
 const getShortOptions = combinedOption =>
-  removeHyphen(combinedOption).split(EMTPY_STRING);
+  removeHyphen(combinedOption).split(EMPTY_STRING);
 
 const parse = function(args) {
   const optionCandidate = args[0];
