@@ -1,3 +1,6 @@
 (*) node ./wc.js file1
-....(*) Write top-level test for default case.
-....(*) Write top-level wc function to pass default case test.
+....(*) Refactor wc()
+........(*) Too many maps and filters are there
+........(*) Separate Formatting from it
+....(*) Refactor tests for wc()
+........(*) Remove duplicacy of fs
