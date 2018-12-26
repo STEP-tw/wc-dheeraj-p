@@ -1,6 +1,6 @@
 (*) node ./wc.js -option file1
 ....(*) Write top-level test
 ....(*) Implement this feature
+........(*) Implement this feature for all options
 
-(*) Group tests for wc()
 (*) Write test for multiline files ---> wc()
