@@ -1,11 +1,10 @@
 const { format } = require('../output/formatter');
 const { NEWLINE, WORD_SEPARATOR, EMTPY_STRING } = require('../constants');
+const { isNotEmpty } = require('../utils/string.js');
 
 const getLines = text => text.split(NEWLINE);
 
 const getLinesCount = lines => lines.length - 1;
-
-const isNotEmpty = text => text !== EMTPY_STRING;
 
 const getWordsCount = text => getWords(text).filter(isNotEmpty).length;
 
