@@ -14,13 +14,18 @@ const getChars = text => text.split(EMTPY_STRING);
 
 const getCharsCount = text => getChars(text).length;
 
-const wc = function(filename, fs) {
-  const fileContent = fs.readFileSync(filename, 'utf-8');
+const getFileDetails = function(filename, fileContent) {
   const lines = getLines(fileContent);
   const lineCount = getLinesCount(lines);
   const wordCount = getWordsCount(fileContent);
   const charCount = getCharsCount(fileContent);
-  return format({ filename, lineCount, wordCount, charCount });
+  return { filename, lineCount, wordCount, charCount };
+};
+
+const wc = function(filename, fs) {
+  const fileContent = fs.readFileSync(filename, 'utf-8');
+  const fileDetails = getFileDetails(filename, fileContent);
+  return format(fileDetails);
 };
 
 module.exports = { wc };
