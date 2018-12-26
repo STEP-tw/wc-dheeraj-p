@@ -1,6 +1,7 @@
-const { format } = require('../output/formatter');
+const { getFormatter } = require('../io/formatter');
 const { NEWLINE, WORD_SEPARATOR, EMTPY_STRING } = require('../constants');
 const { isNotEmpty } = require('../utils/string.js');
+const { parse } = require('../io/parser');
 
 const getLines = text => text.split(NEWLINE);
 
@@ -22,10 +23,12 @@ const getFileDetails = function(filename, fileContent) {
   return { filename, lineCount, wordCount, charCount };
 };
 
-const wc = function(filename, fs) {
+const wc = function(args, fs) {
+  const { filename, option } = parse(args);
   const fileContent = fs.readFileSync(filename, 'utf-8');
   const fileDetails = getFileDetails(filename, fileContent);
-  return format(fileDetails);
+  const formatter = getFormatter(option);
+  return formatter(fileDetails);
 };
 
 module.exports = { wc };
