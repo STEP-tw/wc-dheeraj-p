@@ -7,14 +7,22 @@ const format = function({ filename, lineCount, wordCount, charCount }) {
   return [formattedCount, filename].join(SPACE);
 };
 
-const lineCountFormatter = function({ filename, lineCount }) {
-  const formattedCount = [EMTPY_STRING, lineCount].join(TAB);
+const singleOptionFormatter = function(option, fileDetails) {
+  const count = fileDetails[option];
+  const { filename } = fileDetails;
+  const formattedCount = [EMTPY_STRING, count].join(TAB);
   return [formattedCount, filename].join(SPACE);
 };
 
+const isDefaultOption = option => option == EMTPY_STRING;
+
 const getFormatter = function(option) {
-  const formatters = { line: lineCountFormatter, '': format };
-  return formatters[option];
+  if (isDefaultOption(option)) {
+    return format;
+  }
+
+  const formatter = singleOptionFormatter.bind(null, option);
+  return formatter;
 };
 
 module.exports = { format, getFormatter };

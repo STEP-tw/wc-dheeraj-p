@@ -13,7 +13,7 @@ describe('parse', function() {
   it('should parse arguments with only single file and single option', function() {
     const args = ['-l', 'file'];
     const actual = parse(args);
-    const expected = { filename: 'file', option: 'line' };
+    const expected = { filename: 'file', option: 'lineCount' };
 
     assert.deepEqual(actual, expected);
   });

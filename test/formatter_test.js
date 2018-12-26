@@ -32,12 +32,12 @@ describe('getFormatter', function() {
   });
 
   it('should return line count formatter for line option', function() {
-    const defaultFormatter = getFormatter('line');
+    const singleOptionFormatter = getFormatter('lineCount');
     const dataToFormat = {
       filename: 'file',
       lineCount: 4
     };
-    const actual = defaultFormatter(dataToFormat);
+    const actual = singleOptionFormatter(dataToFormat);
     const expected = '\t4 file';
 
     assert.equal(actual, expected);

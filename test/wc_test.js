@@ -31,10 +31,26 @@ describe('wc', function() {
   });
 
   describe('with single option', function() {
-    it('should return line count along with filename for single file and single option', function() {
+    it('should return line count along with filename for single file', function() {
       const args = ['-l', 'file'];
       const actual = wc(args, fs);
       const expected = '\t0 file';
+
+      assert.equal(actual, expected);
+    });
+
+    it('should return character count along with filename for single file', function() {
+      const args = ['-c', 'file'];
+      const actual = wc(args, fs);
+      const expected = '\t9 file';
+
+      assert.equal(actual, expected);
+    });
+
+    it('should return word count along with filename for single file', function() {
+      const args = ['-w', 'file'];
+      const actual = wc(args, fs);
+      const expected = '\t2 file';
 
       assert.equal(actual, expected);
     });
