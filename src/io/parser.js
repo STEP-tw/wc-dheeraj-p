@@ -24,8 +24,10 @@ const createParsedArgs = function(options, filename) {
 
 const removeHyphen = optionWithHyphen => optionWithHyphen.substr(1);
 
+const getOptions = args => args.filter(isOption);
+
 const parse = function(args) {
-  let options = args.filter(isOption);
+  let options = getOptions(args);
   let filename = args[options.length];
   options = options.map(removeHyphen);
   options = options.join(EMPTY_STRING).split(EMPTY_STRING);
