@@ -2,7 +2,7 @@ const assert = require('assert');
 const { format } = require('../src/io/formatter');
 
 describe('format', function() {
-  it('should return default formatter for no option specified', function() {
+  it('should format counts for default options and three options', function() {
     const defaultOptions = ['lineCount', 'wordCount', 'charCount'];
     const dataToFormat = {
       filename: 'file',
@@ -16,7 +16,7 @@ describe('format', function() {
     assert.equal(actual, expected);
   });
 
-  it('should return single option formatter formatter for line option', function() {
+  it('should format one count for only one specified options', function() {
     const singleOption = ['lineCount'];
     const dataToFormat = {
       filename: 'file',
@@ -28,7 +28,7 @@ describe('format', function() {
     assert.equal(actual, expected);
   });
 
-  it('should return two options formatter for line and word option together', function() {
+  it('should format two counts for two options specified', function() {
     const twoOptions = ['lineCount', 'wordCount'];
     const dataToFormat = {
       filename: 'file',
