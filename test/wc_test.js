@@ -91,4 +91,24 @@ describe('wc', function() {
       assert.equal(actual, expected);
     });
   });
+
+  describe('with two options separated by space', function() {
+    it('should return line and word count along with filename for single file', function() {
+      const args = ['-l', '-w', 'file'];
+      const actual = wc(args, fs);
+      const expected = '\t0\t2 file';
+
+      assert.equal(actual, expected);
+    });
+  });
+
+  describe('with three options separated by space', function() {
+    it('should return line, word and char count along with filename for single file', function() {
+      const args = ['-l', '-w', '-c', 'file'];
+      const actual = wc(args, fs);
+      const expected = '\t0\t2\t9 file';
+
+      assert.equal(actual, expected);
+    });
+  });
 });

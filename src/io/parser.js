@@ -24,16 +24,14 @@ const createParsedArgs = function(options, filename) {
 
 const removeHyphen = optionWithHyphen => optionWithHyphen.substr(1);
 
-const getShortOptions = combinedOption =>
-  removeHyphen(combinedOption).split(EMPTY_STRING);
-
 const parse = function(args) {
-  const optionCandidate = args[0];
-  let filename = args[1];
-  const shortOptions = getShortOptions(optionCandidate);
-  let longOptions = shortOptions.map(getLongOption);
+  let options = args.filter(isOption);
+  let filename = args[options.length];
+  options = options.map(removeHyphen);
+  options = options.join(EMPTY_STRING).split(EMPTY_STRING);
+  let longOptions = options.map(getLongOption);
 
-  if (!isOption(optionCandidate)) {
+  if (longOptions.length == 0) {
     filename = args[0];
     longOptions = [OPTION_LINE_COUNT, OPTION_WORD_COUNT, OPTION_CHAR_COUNT];
   }

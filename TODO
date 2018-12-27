@@ -1,3 +1,3 @@
-(*) Implement feature for multiple separated options --- wc()
-....(*) Write test for case wc -l -w or -l -w -c.
-....(*) Modify parse() to parse multiple options separated by space e.g. `-l -w -c`
+(*) Rename setOrder() to setInOrder()
+....(*) Rename sortedOptions() to orderedOptions()
+....(*) Make constant for default options
