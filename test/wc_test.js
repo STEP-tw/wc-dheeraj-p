@@ -64,5 +64,31 @@ describe('wc', function() {
 
       assert.equal(actual, expected);
     });
+
+    it('should maintain a specific order of counts always -- lineCount, wordCount and charCount', function() {
+      const args = ['-wl', 'file'];
+      const actual = wc(args, fs);
+      const expected = '\t0\t2 file';
+
+      assert.equal(actual, expected);
+    });
+  });
+
+  describe('with three options together', function() {
+    it('should return line and word count along with filename for single file', function() {
+      const args = ['-lwc', 'file'];
+      const actual = wc(args, fs);
+      const expected = '\t0\t2\t9 file';
+
+      assert.equal(actual, expected);
+    });
+
+    it('should maintain a specific order of counts always -- lineCount, wordCount and charCount', function() {
+      const args = ['-wcl', 'file'];
+      const actual = wc(args, fs);
+      const expected = '\t0\t2\t9 file';
+
+      assert.equal(actual, expected);
+    });
   });
 });
