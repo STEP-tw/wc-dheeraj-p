@@ -1,3 +1,2 @@
-(*) Rename setOrder() to setInOrder()
-....(*) Rename sortedOptions() to orderedOptions()
-....(*) Make constant for default options
+(*) Refactor parse()
+....(*) Extract functions

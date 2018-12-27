@@ -7,19 +7,19 @@ const {
 } = require('../constants');
 
 const format = function(fileDetails, options) {
-  const orderedOptions = setOrder(options);
+  const orderedOptions = setInOrder(options);
   const counts = orderedOptions.map(option => fileDetails[option]);
   const formattedCount = TAB + counts.join(TAB);
   return [formattedCount, fileDetails.filename].join(SPACE);
 };
 
-const setOrder = function(options) {
-  const sortedOptions = [
+const setInOrder = function(options) {
+  const orderedOptions = [
     OPTION_LINE_COUNT,
     OPTION_WORD_COUNT,
     OPTION_CHAR_COUNT
   ];
-  return sortedOptions.filter(option => options.includes(option));
+  return orderedOptions.filter(option => options.includes(option));
 };
 
 module.exports = { format };
