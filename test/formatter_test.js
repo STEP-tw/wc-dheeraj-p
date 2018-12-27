@@ -10,7 +10,7 @@ describe('format', function() {
       wordCount: 9,
       charCount: 20
     };
-    const actual = format(dataToFormat, defaultOptions);
+    const actual = format(defaultOptions, dataToFormat);
     const expected = '\t4\t9\t20 file';
 
     assert.equal(actual, expected);
@@ -22,7 +22,7 @@ describe('format', function() {
       filename: 'file',
       lineCount: 4
     };
-    const actual = format(dataToFormat, singleOption);
+    const actual = format(singleOption, dataToFormat);
     const expected = '\t4 file';
 
     assert.equal(actual, expected);
@@ -35,7 +35,7 @@ describe('format', function() {
       lineCount: 4,
       wordCount: 10
     };
-    const actual = format(dataToFormat, twoOptions);
+    const actual = format(twoOptions, dataToFormat);
     const expected = '\t4\t10 file';
 
     assert.equal(actual, expected);
@@ -48,21 +48,21 @@ describe('format', function() {
       lineCount: 4,
       wordCount: 10
     };
-    const actual = format(dataToFormat, twoOptions);
+    const actual = format(twoOptions, dataToFormat);
     const expected = '\t4\t10 file';
 
     assert.equal(actual, expected);
   });
 
   it('should maintain the specific order of count for given three options together', function() {
-    const twoOptions = ['wordCount', 'charCount', 'lineCount'];
+    const threeOptions = ['wordCount', 'charCount', 'lineCount'];
     const dataToFormat = {
       filename: 'file',
       lineCount: 4,
       wordCount: 10,
       charCount: 20
     };
-    const actual = format(dataToFormat, twoOptions);
+    const actual = format(threeOptions, dataToFormat);
     const expected = '\t4\t10\t20 file';
 
     assert.equal(actual, expected);

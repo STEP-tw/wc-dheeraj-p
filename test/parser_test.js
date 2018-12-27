@@ -6,7 +6,7 @@ describe('parse', function() {
     const args = ['file'];
     const actual = parse(args);
     const expected = {
-      filename: 'file',
+      filenames: ['file'],
       options: ['lineCount', 'wordCount', 'charCount']
     };
 
@@ -16,7 +16,7 @@ describe('parse', function() {
   it('should parse arguments with only single file and single option', function() {
     const args = ['-l', 'file'];
     const actual = parse(args);
-    const expected = { filename: 'file', options: ['lineCount'] };
+    const expected = { filenames: ['file'], options: ['lineCount'] };
 
     assert.deepEqual(actual, expected);
   });
@@ -24,7 +24,7 @@ describe('parse', function() {
   it('should parse arguments with only single file and two options together', function() {
     const args = ['-lw', 'file'];
     const actual = parse(args);
-    const expected = { filename: 'file', options: ['lineCount', 'wordCount'] };
+    const expected = { filenames: ['file'], options: ['lineCount', 'wordCount'] };
 
     assert.deepEqual(actual, expected);
   });
@@ -33,7 +33,7 @@ describe('parse', function() {
     const args = ['-lwc', 'file'];
     const actual = parse(args);
     const expected = {
-      filename: 'file',
+      filenames: ['file'],
       options: ['lineCount', 'wordCount', 'charCount']
     };
 
@@ -44,7 +44,7 @@ describe('parse', function() {
     const args = ['-l', '-w', 'file'];
     const actual = parse(args);
     const expected = {
-      filename: 'file',
+      filenames: ['file'],
       options: ['lineCount', 'wordCount']
     };
 
@@ -55,7 +55,18 @@ describe('parse', function() {
     const args = ['-l', '-w', '-c', 'file'];
     const actual = parse(args);
     const expected = {
-      filename: 'file',
+      filenames: ['file'],
+      options: ['lineCount', 'wordCount', 'charCount']
+    };
+
+    assert.deepEqual(actual, expected);
+  });
+
+  it('should parse arguments with multiple files and no option specified', function() {
+    const args = ['file', 'file2', 'file3'];
+    const actual = parse(args);
+    const expected = {
+      filenames: ['file', 'file2', 'file3'],
       options: ['lineCount', 'wordCount', 'charCount']
     };
 

@@ -21,7 +21,7 @@ const getChars = text => text.split(EMPTY_STRING);
 
 const getCharsCount = text => getChars(text).length;
 
-const getFileDetails = function(filename, fileContent) {
+const getFileDetail = function({ filename, fileContent }) {
   const lines = getLines(fileContent);
   const lineCount = getLinesCount(lines);
   const wordCount = getWordsCount(fileContent);
@@ -29,11 +29,36 @@ const getFileDetails = function(filename, fileContent) {
   return { filename, lineCount, wordCount, charCount };
 };
 
+const readFile = function(reader, encoding, filename) {
+  const fileContent = reader(filename, encoding);
+  return { fileContent, filename };
+};
+
+const sum = function(firstFileDetail, secondFileDetail) {
+  let lineCount = firstFileDetail.lineCount + secondFileDetail.lineCount;
+  let charCount = firstFileDetail.charCount + secondFileDetail.charCount;
+  let wordCount = firstFileDetail.wordCount + secondFileDetail.wordCount;
+  const filename = 'total';
+
+  return { filename, lineCount, wordCount, charCount };
+};
+
+const getTotal = function(fileDetails) {
+  return fileDetails.reduce(sum);
+};
+
 const wc = function(args, fs) {
-  const { filename, options } = parse(args);
-  const fileContent = fs.readFileSync(filename, ENCODING_UTF8);
-  const fileDetails = getFileDetails(filename, fileContent);
-  return format(fileDetails, options);
+  const { filenames, options } = parse(args);
+  const utf8Reader = readFile.bind(null, fs.readFileSync, ENCODING_UTF8);
+  const files = filenames.map(utf8Reader);
+  const fileDetails = files.map(getFileDetail);
+  const formatForOptions = format.bind(null, options);
+
+  if (files.length > 1) {
+    fileDetails.push(getTotal(fileDetails));
+  }
+  const finalOutput = fileDetails.map(formatForOptions);
+  return finalOutput.join(NEWLINE);
 };
 
 module.exports = { wc };

@@ -12,7 +12,11 @@ const createFileSystem = function(files, actualEncoding) {
 };
 
 describe('wc', function() {
-  const files = { file: 'some file', emptyFile: '' };
+  const files = {
+    file: 'some file',
+    emptyFile: '',
+    alphabets: 'a b c d\ne f g i j'
+  };
   const fs = createFileSystem(files, 'utf-8');
   describe('without option', function() {
     it('should return line,  word and character count with filename for single file', function() {
@@ -25,6 +29,16 @@ describe('wc', function() {
     it('should return line, word and character count as 0 for single empty file', function() {
       const actual = wc(['emptyFile'], fs);
       const expected = '\t0\t0\t0 emptyFile';
+
+      assert.equal(actual, expected);
+    });
+
+    it('should return line,  word and character count with filename and total for multiple files', function() {
+      const actual = wc(['file', 'alphabets'], fs);
+      const expected =
+        '\t0\t2\t9 file' + '\n' +
+        '\t1\t9\t17 alphabets' + '\n' +
+        '\t1\t11\t26 total';
 
       assert.equal(actual, expected);
     });

@@ -6,11 +6,11 @@ const {
   OPTION_WORD_COUNT
 } = require('../constants');
 
-const format = function(fileDetails, options) {
+const format = function(options, fileDetail) {
   const orderedOptions = setInOrder(options);
-  const counts = orderedOptions.map(option => fileDetails[option]);
+  const counts = orderedOptions.map(option => fileDetail[option]);
   const formattedCount = TAB + counts.join(TAB);
-  return [formattedCount, fileDetails.filename].join(SPACE);
+  return [formattedCount, fileDetail.filename].join(SPACE);
 };
 
 const setInOrder = function(options) {
