@@ -1,10 +1,5 @@
 const { format } = require('../io/formatter');
-const {
-  NEWLINE,
-  WORD_SEPARATOR,
-  EMPTY_STRING,
-  ENCODING_UTF8
-} = require('../constants');
+const { NEWLINE, WORD_SEPARATOR, ENCODING_UTF8 } = require('../constants');
 
 const { isNotEmpty } = require('../utils/string.js');
 const { parse } = require('../io/parser');
