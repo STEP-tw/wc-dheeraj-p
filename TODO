@@ -1,3 +1,3 @@
 (*) Group tests for parse()
 (*) Refactor sum()
-(*) Refactor wc() ---> Extract functions
+(*) Refactor wc() ---> Extract functions ---> Still need more refactoring

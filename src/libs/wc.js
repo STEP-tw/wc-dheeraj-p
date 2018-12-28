@@ -17,9 +17,7 @@ const getWordsCount = text => getWords(text).filter(isNotEmpty).length;
 
 const getWords = text => text.split(WORD_SEPARATOR);
 
-const getChars = text => text.split(EMPTY_STRING);
-
-const getCharsCount = text => getChars(text).length;
+const getCharsCount = text => text.length;
 
 const getFileDetail = function({ filename, fileContent }) {
   const lines = getLines(fileContent);
