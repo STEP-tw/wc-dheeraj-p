@@ -47,10 +47,14 @@ const getTotal = function(fileDetails) {
   return fileDetails.reduce(sum);
 };
 
+const readFiles = function(reader, filenames) {
+  const utf8Reader = readFile.bind(null, reader, ENCODING_UTF8);
+  return filenames.map(utf8Reader);
+};
+
 const wc = function(args, fs) {
   const { filenames, options } = parse(args);
-  const utf8Reader = readFile.bind(null, fs.readFileSync, ENCODING_UTF8);
-  const files = filenames.map(utf8Reader);
+  const files = readFiles(fs.readFileSync, filenames);
   const fileDetails = files.map(getFileDetail);
   const formatForOptions = format.bind(null, options);
 
